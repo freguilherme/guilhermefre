@@ -7,86 +7,31 @@
   <meta name="description" content="Portfólio de Guilherme Fré: experiência, tecnologias, projetos e contato." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>⌨️</text></svg>" />
 </head>
 <body>
-  <div class="ide">
-    <!-- Barra de título -->
-    <header class="titlebar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="title" id="title">guilhermefre — portfolio</div>
-      <button class="palette-btn" id="paletteBtn" title="Busca rápida (Ctrl+K)">⌘K</button>
-    </header>
-
-    <div class="body">
-      <!-- Activity bar -->
-      <nav class="activity" aria-label="Atalhos">
-        <button class="act active" id="toggleExplorer" title="Explorador">
-          <svg viewBox="0 0 24 24"><path d="M3 4h7l2 2h9v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>
-        </button>
-        <button class="act" data-open="projetos.jsx" title="Projetos">
-          <svg viewBox="0 0 24 24"><path d="M8 6 2 12l6 6M16 6l6 6-6 6"/></svg>
-        </button>
-        <button class="act" id="toggleTerminal" title="Terminal">
-          <svg viewBox="0 0 24 24"><path d="M4 6l6 6-6 6M12 18h8"/></svg>
-        </button>
-        <div class="spacer"></div>
-        <a class="act" id="actLinkedin" target="_blank" rel="noopener" title="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M4 9h4v11H4zM6 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.9-1.9 3.6-1.9 3.2 0 3.9 2.1 3.9 4.9V20h-4v-5.6c0-1.4-.2-2.7-1.8-2.7s-1.7 1.2-1.7 2.6V20h-4z" class="fill"/></svg>
-        </a>
-      </nav>
-
-      <!-- Explorer -->
-      <aside class="explorer" id="explorer">
-        <div class="explorer-head">EXPLORADOR</div>
-        <div class="tree-root">▾ GUILHERMEFRE</div>
-        <ul class="tree" id="tree"></ul>
-      </aside>
-      <div class="scrim" id="scrim"></div>
-
-      <!-- Editor + terminal -->
-      <main class="main">
-        <div class="tabs" id="tabs" role="tablist"></div>
-        <div class="breadcrumb" id="breadcrumb"></div>
-        <section class="editor" id="editor" tabindex="-1"></section>
-
-        <section class="panel" id="panel">
-          <div class="panel-head">
-            <span class="panel-tab active">TERMINAL</span>
-            <span class="panel-tab muted">PROBLEMAS <b>0</b></span>
-            <button class="panel-close" id="closeTerminal" title="Fechar terminal">✕</button>
-          </div>
-          <div class="term" id="term">
-            <div id="termOut"></div>
-            <div class="term-line">
-              <span class="prompt"><b class="u">visitante</b>@<b class="h">guilhermefre</b>:<b class="d">~</b>$</span>
-              <input id="termIn" autocomplete="off" spellcheck="false" aria-label="Comando do terminal" />
-            </div>
-          </div>
-        </section>
-      </main>
+  <!-- Cabeçalho fixo: barra de título + abas como menu -->
+  <header class="topbar">
+    <div class="titlebar">
+      <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <a class="brand" href="#inicio">~/guilhermefre</a>
+      <a class="btn btn-sm primary" id="navLinkedin" target="_blank" rel="noopener">in/ LinkedIn ↗</a>
     </div>
+    <nav class="tabs" id="tabs" aria-label="Seções"></nav>
+  </header>
 
-    <!-- Status bar -->
-    <footer class="statusbar">
-      <span class="sb-item sb-branch">⎇ main</span>
-      <span class="sb-item" id="sbStatus"></span>
-      <span class="sb-grow"></span>
-      <span class="sb-item hide-sm" id="sbFile"></span>
-      <span class="sb-item hide-sm">UTF-8</span>
-      <a class="sb-item sb-link" id="sbLinkedin" target="_blank" rel="noopener">in/ LinkedIn ↗</a>
-    </footer>
-  </div>
+  <main id="content"></main>
 
-  <!-- Command palette -->
-  <div class="palette" id="palette" hidden>
-    <div class="palette-box">
-      <input id="paletteIn" placeholder="Digite para abrir um arquivo ou ação…" autocomplete="off" />
-      <ul id="paletteList"></ul>
-    </div>
-  </div>
+  <!-- Rodapé estilo status bar -->
+  <footer class="statusbar">
+    <span>⎇ main</span>
+    <span id="sbStatus"></span>
+    <span class="grow"></span>
+    <span class="hide-sm" id="sbCopy"></span>
+    <a href="#inicio">↑ topo</a>
+  </footer>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
