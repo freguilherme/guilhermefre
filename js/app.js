@@ -192,10 +192,19 @@
   $("#sbCopy").textContent = `© ${new Date().getFullYear()} ${D.nome} · feito com café e código`;
 
   /* ---------- aba ativa conforme a rolagem ---------- */
-  const tabs = [...document.querySelectorAll(".tab")];
+  const tabBar = $("#tabs");
+  const tabs = [...tabBar.querySelectorAll(".tab")];
+  let current;
   const setActive = (id) => {
+    if (id === current) return;
+    current = id;
     tabs.forEach((tb) => tb.classList.toggle("active", tb.dataset.id === id));
-    tabs.find((tb) => tb.dataset.id === id)?.scrollIntoView({ block: "nearest", inline: "nearest" });
+    // rola só a barra de abas (horizontal); scrollIntoView mexeria na rolagem da página
+    const tab = tabs.find((tb) => tb.dataset.id === id);
+    const { scrollLeft, clientWidth } = tabBar;
+    if (tab.offsetLeft < scrollLeft || tab.offsetLeft + tab.offsetWidth > scrollLeft + clientWidth) {
+      tabBar.scrollTo({ left: tab.offsetLeft - 8, behavior: "smooth" });
+    }
   };
   const spy = new IntersectionObserver(
     (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
