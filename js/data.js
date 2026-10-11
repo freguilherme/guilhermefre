@@ -5,7 +5,7 @@
 window.PORTFOLIO = {
   nome: "Guilherme Fré",
   usuario: "guilhermefre",
-  cargo: "Desenvolvedor Full Stack", // TODO
+  cargo: "Desenvolvedor Sênior",
   local: "Brasil", // TODO
   disponivel: true, // mostra "open to work" na status bar
   resumo:
