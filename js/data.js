@@ -19,7 +19,7 @@ window.PORTFOLIO = {
   foco: ["APIs e back-end", "Interfaces web", "Arquitetura e boas práticas"], // TODO
 
   links: {
-    linkedin: "https://www.linkedin.com/in/SEU-USUARIO", // TODO: seu LinkedIn
+    linkedin: "https://www.linkedin.com/in/freguilherme",
     github: "https://github.com/freguilherme",
     email: "", // opcional, ex.: "voce@email.com"
   },
