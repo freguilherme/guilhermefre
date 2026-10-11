@@ -6,7 +6,17 @@ window.PORTFOLIO = {
   usuario: "guilhermefre",
   cargo: "Desenvolvedor Sênior",
   local: "São Pedro, SP — Brasil",
-  disponivel: true, // mostra "open to work" na status bar
+  disponivel: true, // mostra o selo de disponibilidade no topo e na status bar
+  disponibilidade: {
+    resumo: "Disponível para projetos · 15 a 20h/semana",
+    texto:
+      "Hoje trabalho como CLT e tenho disponibilidade para projetos paralelos à noite e aos finais de semana.",
+    itens: [
+      { rotulo: "regime atual", valor: "CLT" },
+      { rotulo: "horários", valor: "noites e finais de semana" },
+      { rotulo: "carga", valor: "15 a 20 horas semanais" },
+    ],
+  },
   resumo:
     "Desenvolvedor Sênior com foco em GeneXus e PL/SQL, atuando na evolução de plataformas corporativas, integrações e performance. Também criei o CRESCER, um SaaS com IA para clínicas de terapia, e desenvolvo sites com a identidade visual de pessoas e empresas.",
   sobre: [
@@ -69,7 +79,7 @@ window.PORTFOLIO = {
   // tecnologias agrupadas por área
   stack: {
     "banco de dados": ["PL/SQL", "Oracle", "PostgreSQL", "SQL Tuning", "MySQL", "DBeaver"],
-    "back-end": ["GeneXus", "Node.js", "Express", "C#", "K2BTools", "FoxPro"],
+    "back-end": ["GeneXus", "Node.js", "C#", "Serverless", "JWT + 2FA", "Zod"],
     "front-end": ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Vite"],
     "integrações": ["APIs REST", "SOAP", "Webhooks", "Stripe", "WhatsApp Business"],
     "qualidade & deploy": ["Git", "GitHub Actions", "Vitest", "Playwright", "Vercel", "Clean Code"],

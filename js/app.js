@@ -72,7 +72,7 @@
           <a class="btn" href="#projetos">▶ Ver projetos</a>
           ${D.links.github ? ext(D.links.github, "⌥ GitHub ↗", "btn") : ""}
         </div>
-        ${D.disponivel ? `<p class="status-pill"><span class="pulse"></span>Disponível para novas oportunidades</p>` : ""}
+        ${D.disponivel ? `<a class="status-pill" href="#contato"><span class="pulse"></span>${esc(D.disponibilidade?.resumo || "Disponível para novas oportunidades")}</a>` : ""}
       </div>
       <div class="hero-visual reveal">${codeWindow("bash — guilhermefre", "", term, { numbered: false, cls: "terminal" })}</div>
       <a class="scroll-hint" href="#sobre" aria-label="Rolar para Sobre">↓</a>
@@ -189,6 +189,11 @@
     ];
     return `<section id="contato" class="section contact">
       ${sectionHead("contato", "05", "Contato", "bora trabalhar juntos")}
+      ${D.disponivel && D.disponibilidade ? `<div class="availability reveal">
+        <p class="c">// disponibilidade.json</p>
+        <p class="avail-text">${esc(D.disponibilidade.texto)}</p>
+        <dl>${D.disponibilidade.itens.map((x) => `<div><dt>${esc(x.rotulo)}</dt><dd>${esc(x.valor)}</dd></div>`).join("")}</dl>
+      </div>` : ""}
       <div class="contact-box reveal">
         ${codeWindow("bash — contato.sh", "", lines, { numbered: false, cls: "terminal" })}
         <div class="btns center">
@@ -207,7 +212,7 @@
   ).join("");
   $("#navLinkedin").href = linkedin;
   $("#navGithub").href = D.links.github;
-  $("#sbStatus").innerHTML = D.disponivel ? `<span class="pulse"></span>open to work` : "✓ pronto";
+  $("#sbStatus").innerHTML = D.disponivel ? `<span class="pulse"></span>disponível · 15–20h/semana` : "✓ pronto";
   $("#sbCopy").textContent = `© ${new Date().getFullYear()} ${D.nome} · feito com café e código`;
 
   /* ---------- aba ativa conforme a rolagem ---------- */

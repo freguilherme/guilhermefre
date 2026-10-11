@@ -215,6 +215,19 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 /* ---------- contato ---------- */
 .contact { padding-bottom: 120px; }
 .contact-box { max-width: 680px; margin: 0 auto; }
+a.status-pill { text-decoration: none; }
+a.status-pill:hover { border-color: var(--accent); }
+.availability {
+  max-width: 680px; margin: 0 auto 28px; padding: 22px 24px; border: 1px solid #1e5c44; border-radius: 12px;
+  background: linear-gradient(120deg, #58e6a80d, #7aa2f70a), var(--bg-side);
+}
+.availability .c { margin: 0 0 6px; font-size: 13px; }
+.avail-text { margin: 0 0 18px; font-size: 16px; color: var(--fg); }
+.availability dl { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.availability dl div { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; background: var(--bg-editor); }
+.availability dt { font-size: 11px; color: var(--muted); }
+.availability dd { margin: 2px 0 0; color: var(--accent); font-weight: 600; font-size: 14px; }
+@media (max-width: 560px) { .availability dl { grid-template-columns: 1fr; } }
 .contact-box .btns { margin-top: 32px; }
 
 /* ---------- status bar ---------- */
