@@ -85,6 +85,7 @@
       `${ind(1)}${p("cargo")}${u(":")} ${s(D.cargo)}${u(",")}`,
       `${ind(1)}${p("local")}${u(":")} ${s(D.local)}${u(",")}`,
       `${ind(1)}${p("foco")}${u(":")} ${arr(D.foco)}${u(",")}`,
+      ...(D.formacao ? [`${ind(1)}${p("formacao")}${u(":")} ${s(D.formacao)}${u(",")}`] : []),
       `${ind(1)}${p("disponivel")}${u(":")} ${k(String(!!D.disponivel))}${u(",")}`,
       u("};"),
     ];
@@ -123,17 +124,9 @@
     const cards = Object.entries(D.stack)
       .map(
         ([cat, items]) => `<div class="skill-card reveal">
-          <div class="skill-head">${f(cat)}<span class="u">: {</span></div>
-          <ul>${items
-            .map(
-              (it) => `<li>
-                <span class="skill-name">${esc(it.nome)}</span>
-                <span class="meter" role="img" aria-label="${esc(it.nome)}: ${it.nivel}%"><span style="--v:${it.nivel}%"></span></span>
-                <span class="n">${it.nivel}</span>
-              </li>`
-            )
-            .join("")}</ul>
-          <div class="u">}</div>
+          <div class="skill-head">${f(/^[\w$]+$/.test(cat) ? cat : `"${cat}"`)}<span class="u">: [</span></div>
+          <div class="tags skill-tags">${items.map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>
+          <div class="u">],</div>
         </div>`
       )
       .join("");
@@ -146,9 +139,9 @@
   function projetos() {
     const cards = D.projetos
       .map((pr, i) => {
-        const links = [pr.repo && ext(pr.repo, "⌥ código ↗"), pr.demo && ext(pr.demo, "▶ ver online ↗")].filter(Boolean).join("");
+        const links = [pr.demo && ext(pr.demo, `▶ ${esc(pr.demoLabel || "ver online ↗")}`, "card-cta"), pr.repo && ext(pr.repo, "⌥ código ↗")].filter(Boolean).join("");
         return `<article class="card reveal">
-          <div class="card-top"><span>&lt;Projeto id={${i + 1}} /&gt;</span><span aria-hidden="true">📁</span></div>
+          <div class="card-top"><span>&lt;Projeto id={${i + 1}} /&gt;</span>${pr.status ? `<span class="badge">${esc(pr.status)}</span>` : ""}</div>
           <h3>${esc(pr.nome)}</h3>
           <p>${esc(pr.descricao)}</p>
           <div class="tags">${(pr.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>
@@ -159,6 +152,11 @@
     return `<section id="projetos" class="section">
       ${sectionHead("projetos", "04", "Projetos", "alguns trabalhos que já entreguei")}
       <div class="cards">${cards}</div>
+      <div class="more-github reveal">${ext(D.links.github, "⌥ Ver todos os meus repositórios no GitHub ↗", "btn")}</div>
+      ${D.servico ? `<aside class="service reveal">
+        <div><p class="c">// sites sob medida</p><h3>${esc(D.servico.titulo)}</h3><p>${esc(D.servico.texto)}</p></div>
+        <a class="btn primary" href="#contato">Fale comigo →</a>
+      </aside>` : ""}
     </section>`;
   }
 
@@ -188,6 +186,7 @@
     (x) => `<a class="tab" href="#${x.id}" data-id="${x.id}" title="${esc(x.file)}">${ficon(x)}<span>${esc(x.label)}</span></a>`
   ).join("");
   $("#navLinkedin").href = linkedin;
+  $("#navGithub").href = D.links.github;
   $("#sbStatus").innerHTML = D.disponivel ? `<span class="pulse"></span>open to work` : "✓ pronto";
   $("#sbCopy").textContent = `© ${new Date().getFullYear()} ${D.nome} · feito com café e código`;
 
