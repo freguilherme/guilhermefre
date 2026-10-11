@@ -8,11 +8,11 @@ window.PORTFOLIO = {
   local: "São Pedro, SP — Brasil",
   disponivel: true, // mostra "open to work" na status bar
   resumo:
-    "Desenvolvedor Sênior com foco em GeneXus e PL/SQL, atuando na evolução de plataformas corporativas, integrações e performance. Também crio produtos SaaS com IA e sites com a identidade visual de pessoas e empresas.",
+    "Desenvolvedor Sênior com foco em GeneXus e PL/SQL, atuando na evolução de plataformas corporativas, integrações e performance. Também criei o CRESCER, um SaaS com IA para clínicas de terapia, e desenvolvo sites com a identidade visual de pessoas e empresas.",
   sobre: [
     "Minha especialidade é reduzir complexidade, otimizar rotinas críticas e transformar código em soluções simples, escaláveis e sustentáveis.",
     "Tenho experiência prática em desenvolvimento Web e Mobile com GeneXus, integrações via APIs REST/SOAP e Webhooks, rotinas PL/SQL em Oracle (procedures, functions e packages) e sustentação de sistemas corporativos com análise de causa raiz.",
-    "Fora do dia a dia corporativo, criei sozinho um SaaS com IA para terapeutas autônomos e clínicas, e desenvolvo sites sob medida com a identidade visual de cada cliente.",
+    "Fora do dia a dia corporativo, criei sozinho o CRESCER, um SaaS com IA para terapeutas autônomos e clínicas — React, Node.js, PostgreSQL e Stripe, com foco em segurança e LGPD —, e desenvolvo sites sob medida com a identidade visual de cada cliente.",
     "Trabalho com foco em clareza técnica, autonomia e resultados reais — não apenas entregas de tarefas.",
   ],
   foco: [
@@ -68,36 +68,58 @@ window.PORTFOLIO = {
 
   // tecnologias agrupadas por área
   stack: {
-    "banco de dados": ["PL/SQL", "Oracle", "SQL Tuning", "MySQL", "DBeaver"],
-    "desenvolvimento": ["GeneXus", "K2BTools", "C#", "FoxPro"],
-    "integrações": ["APIs REST", "SOAP", "Webhooks"],
-    "web & ferramentas": ["HTML", "CSS", "JavaScript", "Git", "Clean Code"],
+    "banco de dados": ["PL/SQL", "Oracle", "PostgreSQL", "SQL Tuning", "MySQL", "DBeaver"],
+    "back-end": ["GeneXus", "Node.js", "Express", "C#", "K2BTools", "FoxPro"],
+    "front-end": ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Vite"],
+    "integrações": ["APIs REST", "SOAP", "Webhooks", "Stripe", "WhatsApp Business"],
+    "qualidade & deploy": ["Git", "GitHub Actions", "Vitest", "Playwright", "Vercel", "Clean Code"],
   },
 
   projetos: [
     {
-      nome: "OT Manager",
+      nome: "CRESCER",
+      subtitulo: "SaaS para clínicas de terapia",
+      destaque: true, // card largo, no topo
       status: "em desenvolvimento",
       descricao:
-        "SaaS com inteligência artificial para gestão de terapeutas autônomos e clínicas de grande porte. Projeto criado por mim de ponta a ponta — do produto ao código.",
-      tags: ["SaaS", "IA", "Saúde", "Produto próprio"],
+        "Agenda, prontuário e financeiro da clínica num lugar só — para fisioterapia, terapia ocupacional, fonoaudiologia e psicologia, de terapeutas autônomos a clínicas de grande porte. Criei sozinho, do produto à arquitetura, com IA gerando rascunhos de relatórios clínicos.",
+      destaques: [
+        "Multi-tenant com isolamento por clínica: filtro por empresa_id + Row Level Security no PostgreSQL",
+        "LGPD by design: verificação em duas etapas (TOTP), sessão revogável e nenhum dado de paciente em logs",
+        "Assinatura com Stripe: 3 planos, 14 dias grátis, troca de plano com cobrança proporcional",
+        "Lembretes e confirmação de presença pelo WhatsApp Business e integração com Google Agenda",
+        "Arquitetura em camadas verificada no CI, com testes de unidade, integração, E2E e mutação",
+      ],
+      metricas: [
+        { valor: "~1.000", rotulo: "testes automatizados" },
+        { valor: "216+", rotulo: "issues e PRs" },
+        { valor: "3", rotulo: "planos de assinatura" },
+      ],
+      tags: ["React", "TypeScript", "Vite", "PWA", "Node.js", "Express", "PostgreSQL", "Stripe", "IA", "Vercel", "GitHub Actions", "Playwright", "Vitest", "Sentry"],
       demo: "https://ot-manager-frontend.vercel.app/",
       demoLabel: "conhecer o projeto ↗",
     },
     {
-      nome: "Giovanna Luvizotto",
+      nome: "Dra. Giovanna Luvizotto",
+      subtitulo: "Site de fisioterapia pediátrica",
       status: "site no ar",
       descricao:
-        "Site profissional sob medida, construído com a identidade visual da cliente. Exemplo dos sites que desenvolvo para pessoas e empresas.",
-      tags: ["Site", "Identidade visual", "Responsivo"],
+        "Site institucional de página única com a identidade visual da profissional: paleta derivada do cartão de visita, logo recortado do cartão e contato direto pelo WhatsApp.",
+      destaques: [
+        "Paleta e tipografia (Fraunces + Inter) criadas a partir do cartão de visita",
+        "Logo extraído com Python (Pillow + NumPy) e fundo removido por chroma key",
+        "Animações leves com IntersectionObserver, respeitando movimento reduzido",
+      ],
+      tags: ["HTML5", "CSS3", "JavaScript", "Python", "Playwright", "Netlify"],
       demo: "https://www.giovannaluvizotto.com.br/",
       demoLabel: "ver o site ↗",
     },
     {
       nome: "Este portfólio",
+      subtitulo: "Página única com visual de IDE",
       status: "site no ar",
       descricao:
-        "Portfólio em página única com visual inspirado no VS Code, feito com HTML, CSS e JavaScript puros.",
+        "Portfólio inspirado no VS Code, feito sem frameworks: conteúdo em um único arquivo de dados, animações leves e layout responsivo.",
       tags: ["HTML", "CSS", "JavaScript"],
       repo: "https://github.com/freguilherme/guilhermefre",
     },

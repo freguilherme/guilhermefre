@@ -137,20 +137,40 @@
   }
 
   function projetos() {
-    const cards = D.projetos
-      .map((pr, i) => {
+    const card = (pr, i) => {
         const links = [pr.demo && ext(pr.demo, `▶ ${esc(pr.demoLabel || "ver online ↗")}`, "card-cta"), pr.repo && ext(pr.repo, "⌥ código ↗")].filter(Boolean).join("");
+        const tags = `<div class="tags">${(pr.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>`;
+        const list = pr.destaques?.length ? `<ul class="highlights">${pr.destaques.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+        const kpis = pr.metricas?.length
+          ? `<div class="kpis">${pr.metricas.map((m) => `<div class="kpi"><b>${esc(m.valor)}</b><span>${esc(m.rotulo)}</span></div>`).join("")}</div>`
+          : "";
+        const cta = pr.demo && pr.destaque ? ext(pr.demo, `▶ ${esc(pr.demoLabel || "ver online ↗")}`, "btn primary") : "";
+        const top = `<div class="card-top"><span>&lt;Projeto id={${i + 1}} /&gt;</span>${pr.status ? `<span class="badge">${esc(pr.status)}</span>` : ""}</div>`;
+        const title = `<h3>${esc(pr.nome)}</h3>${pr.subtitulo ? `<p class="card-sub">${esc(pr.subtitulo)}</p>` : ""}`;
+        if (pr.destaque) {
+          return `<article class="card featured reveal">
+            ${top}
+            <div class="featured-grid">
+              <div>${title}<p>${esc(pr.descricao)}</p>${list}</div>
+              <div class="featured-side">${kpis}${tags}${cta}</div>
+            </div>
+          </article>`;
+        }
         return `<article class="card reveal">
-          <div class="card-top"><span>&lt;Projeto id={${i + 1}} /&gt;</span>${pr.status ? `<span class="badge">${esc(pr.status)}</span>` : ""}</div>
-          <h3>${esc(pr.nome)}</h3>
+          ${top}
+          ${title}
           <p>${esc(pr.descricao)}</p>
-          <div class="tags">${(pr.tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>
+          ${list}
+          ${tags}
           ${links ? `<div class="card-links">${links}</div>` : ""}
         </article>`;
-      })
-      .join("");
+    };
+    const indexed = D.projetos.map((pr, i) => [pr, i]);
+    const featured = indexed.filter(([pr]) => pr.destaque).map(([pr, i]) => card(pr, i)).join("");
+    const cards = indexed.filter(([pr]) => !pr.destaque).map(([pr, i]) => card(pr, i)).join("");
     return `<section id="projetos" class="section">
       ${sectionHead("projetos", "04", "Projetos", "alguns trabalhos que já entreguei")}
+      ${featured}
       <div class="cards">${cards}</div>
       <div class="more-github reveal">${ext(D.links.github, "⌥ Ver todos os meus repositórios no GitHub ↗", "btn")}</div>
       ${D.servico ? `<aside class="service reveal">
