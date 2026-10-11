@@ -88,26 +88,33 @@ window.PORTFOLIO = {
   projetos: [
     {
       nome: "CRESCER",
-      subtitulo: "SaaS para clínicas de terapia",
+      subtitulo: "SaaS de gestão para clínicas de terapia",
       destaque: true, // card largo, no topo
       status: "em desenvolvimento",
       descricao:
-        "Agenda, prontuário e financeiro da clínica num lugar só — para fisioterapia, terapia ocupacional, fonoaudiologia e psicologia, de terapeutas autônomos a clínicas de grande porte. Criei sozinho, do produto à arquitetura, com IA gerando rascunhos de relatórios clínicos.",
+        "Agenda, prontuário, financeiro e assinatura num sistema só — para fisioterapia, terapia ocupacional, fonoaudiologia e psicologia, de terapeutas autônomos a clínicas de grande porte. Projeto full stack criado por mim, do produto à arquitetura, tratando dados de saúde do jeito que a LGPD pede.",
+      antesDepois: [
+        ["Agenda no celular", "Agenda da equipe inteira, com Google Agenda"],
+        ["Evolução em papel", "Prontuário com autor, histórico e gráfico de progresso"],
+        ["Financeiro em planilha", "Receitas, despesas, mensalistas e fechamento mensal"],
+        ["Confirmação manual no WhatsApp", "Lembrete automático 24h antes, com link"],
+        ["Recibo feito à mão", "Recibo e relatórios em PDF num clique"],
+      ],
       destaques: [
-        "Multi-tenant com isolamento por clínica: filtro por empresa_id + Row Level Security no PostgreSQL",
-        "LGPD by design: verificação em duas etapas (TOTP), sessão revogável e nenhum dado de paciente em logs",
-        "Assinatura com Stripe: 3 planos, 14 dias grátis, troca de plano com cobrança proporcional",
-        "Lembretes e confirmação de presença pelo WhatsApp Business e integração com Google Agenda",
-        "Arquitetura em camadas verificada no CI, com testes de unidade, integração, E2E e mutação",
+        "Relatórios com IA: rascunho gerado a partir das evoluções e revisado pelo terapeuta",
+        "Multiempresa isolado: filtro por clínica em toda consulta + Row Level Security no PostgreSQL",
+        "LGPD desde a primeira linha: duas etapas, sessão revogável e nenhum dado de paciente em logs",
+        "Modelo SaaS completo com Stripe: teste grátis de 14 dias, troca de plano proporcional e modo só leitura",
+        "Arquitetura em camadas verificada no CI; deploy só sai da main com tudo verde",
       ],
       metricas: [
-        { valor: "~1.000", rotulo: "testes automatizados" },
-        { valor: "216+", rotulo: "issues e PRs" },
-        { valor: "3", rotulo: "planos de assinatura" },
+        { valor: "1.000+", rotulo: "testes automatizados" },
+        { valor: "200+", rotulo: "issues e pull requests" },
+        { valor: "3", rotulo: "níveis de teste (unit, integração, E2E)" },
       ],
-      tags: ["React", "TypeScript", "Vite", "PWA", "Node.js", "Express", "PostgreSQL", "Stripe", "IA", "Vercel", "GitHub Actions", "Playwright", "Vitest", "Sentry"],
-      demo: "https://ot-manager-frontend.vercel.app/",
-      demoLabel: "conhecer o projeto ↗",
+      tags: ["React", "TypeScript", "Vite", "PWA", "Node.js", "Express", "PostgreSQL", "Stripe", "WhatsApp Business", "IA", "Vercel", "GitHub Actions", "Playwright", "Vitest", "Sentry"],
+      doc: "assets/crescer-apresentacao.pdf",
+      docLabel: "ver apresentação do projeto (PDF)",
     },
     {
       nome: "Dra. Giovanna Luvizotto",

@@ -144,15 +144,23 @@
         const kpis = pr.metricas?.length
           ? `<div class="kpis">${pr.metricas.map((m) => `<div class="kpi"><b>${esc(m.valor)}</b><span>${esc(m.rotulo)}</span></div>`).join("")}</div>`
           : "";
-        const cta = pr.demo && pr.destaque ? ext(pr.demo, `▶ ${esc(pr.demoLabel || "ver online ↗")}`, "btn primary") : "";
+        const cta = pr.destaque
+          ? [pr.demo && ext(pr.demo, `▶ ${esc(pr.demoLabel || "ver online ↗")}`, "btn primary"),
+             pr.doc && ext(pr.doc, `▤ ${esc(pr.docLabel || "ver apresentação")} ↗`, `btn ${pr.demo ? "" : "primary"}`)].filter(Boolean).join("")
+          : "";
+        const compare = pr.antesDepois?.length
+          ? `<div class="compare"><div class="compare-head"><span>antes</span><span>com o ${esc(pr.nome)}</span></div>${pr.antesDepois
+              .map(([a, b]) => `<div class="compare-row"><span class="before">${esc(a)}</span><span class="after">${esc(b)}</span></div>`)
+              .join("")}</div>`
+          : "";
         const top = `<div class="card-top"><span>&lt;Projeto id={${i + 1}} /&gt;</span>${pr.status ? `<span class="badge">${esc(pr.status)}</span>` : ""}</div>`;
         const title = `<h3>${esc(pr.nome)}</h3>${pr.subtitulo ? `<p class="card-sub">${esc(pr.subtitulo)}</p>` : ""}`;
         if (pr.destaque) {
           return `<article class="card featured reveal">
             ${top}
             <div class="featured-grid">
-              <div>${title}<p>${esc(pr.descricao)}</p>${list}</div>
-              <div class="featured-side">${kpis}${tags}${cta}</div>
+              <div>${title}<p>${esc(pr.descricao)}</p>${compare}</div>
+              <div class="featured-side">${kpis}${list}${tags}<div class="cta-row">${cta}</div></div>
             </div>
           </article>`;
         }
