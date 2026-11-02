@@ -13,10 +13,15 @@ js/app.js       # renderização das seções e animações
 
 Para atualizar o conteúdo, edite apenas `js/data.js` (os itens marcados com `TODO` são exemplos).
 
-## Imagens da seção "Sites"
+## Vídeos da seção "Sites"
 
-As capturas ficam em `assets/sites/`. Para usar GIFs animados, coloque os arquivos nessa pasta
-(ex.: `confeitaria.gif`) e atualize o campo `imagem` do item correspondente em `sites`, no `js/data.js`.
+Os sites são exibidos como vídeos MP4 em loop (`assets/sites/*.mp4`), muito mais leves que GIF.
+A imagem `.webp` aparece enquanto o vídeo carrega. Os GIFs originais ficam em `assets/sites/originais/`.
+Para converter um novo GIF:
+
+```bash
+ffmpeg -i demo.gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -crf 24 -an demo.mp4
+```
 
 ## Rodando localmente
 

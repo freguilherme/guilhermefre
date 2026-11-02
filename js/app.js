@@ -195,7 +195,9 @@
               <span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>
               <span class="window-title">${esc(st.marca)}</span>
             </div>
-            <img src="${esc(st.imagem)}" alt="${esc(st.alt || st.marca)}" width="720" height="428" loading="lazy" decoding="async" />
+            ${st.video
+              ? `<video class="demo" muted loop playsinline preload="none" width="720" height="428" poster="${esc(st.imagem)}" aria-label="${esc(st.alt || st.marca)}"><source src="${esc(st.video.replace(/\.mp4$/, ".webm"))}" type="video/webm" /><source src="${esc(st.video)}" type="video/mp4" /></video>`
+              : `<img src="${esc(st.imagem)}" alt="${esc(st.alt || st.marca)}" width="720" height="428" loading="lazy" decoding="async" />`}
           </div>
           <div class="site-info">
             <div class="site-meta"><p class="card-sub">${esc(st.tipo)}</p>${st.conceito ? `<span class="badge">projeto conceito</span>` : ""}</div>
@@ -281,6 +283,18 @@
     { rootMargin: "0px 0px -8% 0px" }
   );
   document.querySelectorAll(".reveal").forEach((el) => reveal.observe(el));
+
+  /* ---------- vídeos da seção Sites: tocam só quando visíveis ---------- */
+  const demos = document.querySelectorAll("video.demo");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    demos.forEach((v) => { v.controls = true; v.preload = "metadata"; });
+  } else {
+    const player = new IntersectionObserver(
+      (entries) => entries.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())),
+      { threshold: 0.25 }
+    );
+    demos.forEach((v) => player.observe(v));
+  }
 
   /* ---------- efeito de digitação ---------- */
   const typed = $("#typed");

@@ -142,7 +142,7 @@ window.PORTFOLIO = {
     },
   ],
 
-  // vitrine de sites (seção "Sites"); a imagem pode ser .gif, .webp ou .png
+  // vitrine de sites (seção "Sites"): vídeo em loop + imagem exibida enquanto carrega
   sites: [
     {
       tipo: "Confeitaria artesanal",
@@ -152,6 +152,7 @@ window.PORTFOLIO = {
       destaques: ["Troca de sabor muda a cor da página", "Cardápio com preços", "Calculadora de docinhos por festa", "Pedido direto no WhatsApp"],
       conceito: true,
       imagem: "assets/sites/confeitaria.webp",
+      video: "assets/sites/doce-atelie.mp4",
       alt: "Site Doce Ateliê: brigadeiro em destaque e seletor de sabores com preços",
     },
     {
@@ -162,6 +163,7 @@ window.PORTFOLIO = {
       destaques: ["Método de trabalho em 4 etapas", "Resultados e estudo de caso", "Depoimentos e equipe", "Formulário para agendar diagnóstico"],
       conceito: true,
       imagem: "assets/sites/consultoria.webp",
+      video: "assets/sites/vertice-consultoria.mp4",
       alt: "Site Vértice: título 'Gestão clara. Crescimento real.' e gráficos de faturamento",
     },
     {
@@ -172,6 +174,7 @@ window.PORTFOLIO = {
       destaques: ["Galeria filtrável por ambiente", "Desenhos técnicos com medidas", "Processo do projeto à instalação", "Orçamento enviado pelo WhatsApp"],
       conceito: true,
       imagem: "assets/sites/marcenaria.webp",
+      video: "assets/sites/veio-marcenaria.mp4",
       alt: "Site Veio: desenho técnico de cozinha planejada sobre textura de madeira",
     },
   ],
