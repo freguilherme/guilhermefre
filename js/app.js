@@ -25,6 +25,7 @@
     { id: "experiencia", file: "experiencia.json", label: "Experiência", icon: "{}", color: "#cbcb41" },
     { id: "stack", file: "stack.config.js", label: "Tecnologias", icon: "JS", color: "#f1e05a" },
     { id: "projetos", file: "projetos.jsx", label: "Projetos", icon: "⚛", color: "#61dafb" },
+    { id: "sites", file: "sites.html", label: "Sites", icon: "<>", color: "#e34c26" },
     { id: "contato", file: "contato.sh", label: "Contato", icon: "$", color: "#89e051" },
   ];
   const sec = (id) => SECTIONS.find((x) => x.id === id);
@@ -181,6 +182,33 @@
       ${featured}
       <div class="cards">${cards}</div>
       <div class="more-github reveal">${ext(D.links.github, "⌥ Ver todos os meus repositórios no GitHub ↗", "btn")}</div>
+    </section>`;
+  }
+
+  function sites() {
+    if (!D.sites?.length) return "";
+    const items = D.sites
+      .map(
+        (st) => `<article class="site reveal">
+          <div class="browser">
+            <div class="window-bar">
+              <span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="window-title">${esc(st.marca)}</span>
+            </div>
+            <img src="${esc(st.imagem)}" alt="${esc(st.alt || st.marca)}" width="720" height="428" loading="lazy" decoding="async" />
+          </div>
+          <div class="site-info">
+            <p class="card-sub">${esc(st.tipo)}</p>
+            <h3>${esc(st.marca)}</h3>
+            <p>${esc(st.descricao)}</p>
+            <ul class="highlights">${(st.destaques || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+          </div>
+        </article>`
+      )
+      .join("");
+    return `<section id="sites" class="section">
+      ${sectionHead("sites", "05", "Sites", "landing pages e sites institucionais com identidade visual")}
+      <div class="sites">${items}</div>
       ${D.servico ? `<aside class="service reveal">
         <div><p class="c">// sites sob medida</p><h3>${esc(D.servico.titulo)}</h3><p>${esc(D.servico.texto)}</p></div>
         <a class="btn primary" href="#contato">Fale comigo →</a>
@@ -196,7 +224,7 @@
       `<span class="out">com experiências e recomendações, está no LinkedIn.</span>`,
     ];
     return `<section id="contato" class="section contact">
-      ${sectionHead("contato", "05", "Contato", "bora trabalhar juntos")}
+      ${sectionHead("contato", "06", "Contato", "bora trabalhar juntos")}
       ${D.disponivel && D.disponibilidade ? `<div class="availability reveal">
         <p class="c">// disponibilidade.json</p>
         <p class="avail-text">${esc(D.disponibilidade.texto)}</p>
@@ -214,7 +242,7 @@
   }
 
   /* ---------- render ---------- */
-  $("#content").innerHTML = [hero(), sobre(), experiencia(), stack(), projetos(), contato()].join("");
+  $("#content").innerHTML = [hero(), sobre(), experiencia(), stack(), projetos(), sites(), contato()].join("");
   $("#tabs").innerHTML = SECTIONS.map(
     (x) => `<a class="tab" href="#${x.id}" data-id="${x.id}" title="${esc(x.file)}">${ficon(x)}<span>${esc(x.label)}</span></a>`
   ).join("");

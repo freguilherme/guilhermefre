@@ -13,6 +13,11 @@ js/app.js       # renderização das seções e animações
 
 Para atualizar o conteúdo, edite apenas `js/data.js` (os itens marcados com `TODO` são exemplos).
 
+## Imagens da seção "Sites"
+
+As capturas ficam em `assets/sites/`. Para usar GIFs animados, coloque os arquivos nessa pasta
+(ex.: `confeitaria.gif`) e atualize o campo `imagem` do item correspondente em `sites`, no `js/data.js`.
+
 ## Rodando localmente
 
 Abra o `index.html` no navegador, ou:

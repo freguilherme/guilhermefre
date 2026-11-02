@@ -220,6 +220,23 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .service h3 { margin: 4px 0 6px; font-size: 20px; }
 .service p { margin: 0; color: var(--fg-soft); }
 
+/* ---------- sites ---------- */
+.sites { display: grid; gap: 56px; }
+.site { display: grid; grid-template-columns: 1.35fr 1fr; gap: 36px; align-items: center; }
+.site:nth-child(even) { grid-template-columns: 1fr 1.35fr; }
+.site:nth-child(even) .browser { order: 2; }
+.browser { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg-bar); box-shadow: 0 24px 60px #0007; }
+.browser img { display: block; width: 100%; height: auto; aspect-ratio: 720 / 428; object-fit: cover; background: var(--bg-editor); }
+.site-info h3 { margin: 4px 0 10px; font-size: 24px; color: var(--fn); }
+.site-info > p:not(.card-sub) { margin: 0 0 16px; color: var(--fg-soft); }
+.site-info .card-sub { margin: 0 !important; }
+.site-info .highlights { font-size: 14px; }
+@media (max-width: 860px) {
+  .site, .site:nth-child(even) { grid-template-columns: 1fr; gap: 18px; }
+  .site:nth-child(even) .browser { order: 0; }
+  .sites { gap: 44px; }
+}
+
 /* ---------- contato ---------- */
 .contact { padding-bottom: 120px; }
 .contact-box { max-width: 680px; margin: 0 auto; }
