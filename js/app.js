@@ -198,7 +198,7 @@
             <img src="${esc(st.imagem)}" alt="${esc(st.alt || st.marca)}" width="720" height="428" loading="lazy" decoding="async" />
           </div>
           <div class="site-info">
-            <p class="card-sub">${esc(st.tipo)}</p>
+            <div class="site-meta"><p class="card-sub">${esc(st.tipo)}</p>${st.conceito ? `<span class="badge">projeto conceito</span>` : ""}</div>
             <h3>${esc(st.marca)}</h3>
             <p>${esc(st.descricao)}</p>
             <ul class="highlights">${(st.destaques || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
@@ -207,7 +207,7 @@
       )
       .join("");
     return `<section id="sites" class="section">
-      ${sectionHead("sites", "05", "Sites", "landing pages e sites institucionais com identidade visual")}
+      ${sectionHead("sites", "05", "Sites", "projetos conceito: landing pages e sites institucionais com identidade visual")}
       <div class="sites">${items}</div>
       ${D.servico ? `<aside class="service reveal">
         <div><p class="c">// sites sob medida</p><h3>${esc(D.servico.titulo)}</h3><p>${esc(D.servico.texto)}</p></div>

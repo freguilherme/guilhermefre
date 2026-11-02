@@ -230,6 +230,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 .site-info h3 { margin: 4px 0 10px; font-size: 24px; color: var(--fn); }
 .site-info > p:not(.card-sub) { margin: 0 0 16px; color: var(--fg-soft); }
 .site-info .card-sub { margin: 0 !important; }
+.site-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.site-meta .card-sub { flex: none !important; }
 .site-info .highlights { font-size: 14px; }
 @media (max-width: 860px) {
   .site, .site:nth-child(even) { grid-template-columns: 1fr; gap: 18px; }

@@ -150,6 +150,7 @@ window.PORTFOLIO = {
       descricao:
         "Landing page de uma confeitaria de brigadeiros gourmet, bolos e doces para festas. Na abertura, o visitante escolhe o sabor e a cor da página e o brigadeiro mudam junto.",
       destaques: ["Troca de sabor muda a cor da página", "Cardápio com preços", "Calculadora de docinhos por festa", "Pedido direto no WhatsApp"],
+      conceito: true,
       imagem: "assets/sites/confeitaria.webp",
       alt: "Site Doce Ateliê: brigadeiro em destaque e seletor de sabores com preços",
     },
@@ -159,6 +160,7 @@ window.PORTFOLIO = {
       descricao:
         "Site institucional de uma consultoria em gestão empresarial, com visual sóbrio em grafite e verde-petróleo e serviços apresentados com gráficos ilustrativos.",
       destaques: ["Método de trabalho em 4 etapas", "Resultados e estudo de caso", "Depoimentos e equipe", "Formulário para agendar diagnóstico"],
+      conceito: true,
       imagem: "assets/sites/consultoria.webp",
       alt: "Site Vértice: título 'Gestão clara. Crescimento real.' e gráficos de faturamento",
     },
@@ -168,6 +170,7 @@ window.PORTFOLIO = {
       descricao:
         "Site de uma marcenaria de móveis planejados, com textura de madeira e desenhos técnicos com medidas reais, apresentando serviços e o processo do projeto à instalação.",
       destaques: ["Galeria filtrável por ambiente", "Desenhos técnicos com medidas", "Processo do projeto à instalação", "Orçamento enviado pelo WhatsApp"],
+      conceito: true,
       imagem: "assets/sites/marcenaria.webp",
       alt: "Site Veio: desenho técnico de cozinha planejada sobre textura de madeira",
     },
