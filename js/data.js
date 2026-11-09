@@ -177,6 +177,21 @@ window.PORTFOLIO = {
       video: "assets/sites/veio-marcenaria.mp4",
       alt: "Site Veio: desenho técnico de cozinha planejada sobre textura de madeira",
     },
+    {
+      tipo: "Portal de notícias de carnaval",
+      marca: "Nota Dez",
+      descricao:
+        "Portal sobre o Carnaval 2027 com notícias das escolas de samba, manchetes em destaque com ilustrações próprias e navegação pelos quesitos avaliados no desfile.",
+      destaques: [
+        "Atalhos para os 9 quesitos: bateria, samba-enredo, harmonia e mais",
+        "Manchetes com etiquetas como urgente, ensaio técnico e samba-enredo",
+        "Escolas, palpites, calendário, álbuns de fotos e apuração",
+        "Busca de notícias e escolas e área de login",
+      ],
+      conceito: true,
+      imagem: "assets/sites/carnaval.webp",
+      alt: "Site Nota Dez: menu de quesitos do carnaval e manchetes ilustradas",
+    },
   ],
 
   // chamada exibida abaixo dos projetos
